@@ -1,0 +1,14 @@
+.titel{
+    font-size: 60px;
+    text-align: center;
+}
+.mitte {
+    margin-left: auto;
+    margin-right: auto;
+}
+.textarea{
+    padding-top: 0%;
+}
+html{
+    background: black;
+}
