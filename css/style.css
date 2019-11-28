@@ -1,11 +1,28 @@
-.titel{
-    font-size: 60px;
-    text-align: center;
+.grids{
+    font-size: larger;
+    background-color: indianred;
+    display: grid;
+    grid-template-columns: 520px auto;
+    grid-template-rows: 200px auto; 
 }
-.mitte {
-    margin-left: auto;
-    margin-right: auto;
+
+.header{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border: 2px black solid;
 }
-.textarea{
-    padding-top: 0%;
+
+.aside{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: 2px black solid;
+} 
+.main{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: 2px black solid;
 }

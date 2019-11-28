@@ -1,23 +1,18 @@
- <?php
-/* $user = 'blj';
-$password = '123';
-$pdo = new PDO('mysql:host=10.20.18.113;dbname=blog', $user, $password, [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
- ]);*/
+<?php
 $user = 'root';
 $password = '';
 $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+
 ]);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Das Feld wurde mitgesendet, wir können den Wert also übernehmen
-    $vor_nachname = $_POST['vor_nachname'] ?? '';
-    $time_date = $_POST['time_date'] ?? '';
-    $titel_text= $_POST['titel_text'] ?? '';
-    $text_text = $_POST['text_text'] ?? '';
+    $vor_nachname = htmlentities($_POST['vor_nachname'] ?? '');
+    $time_date = htmlentities($_POST['time_date'] ?? '');
+    $titel_text= htmlentities($_POST['titel_text'] ?? '');
+    $text_text = htmlentities($_POST['text_text'] ?? '');
 
     $stmt = $pdo->prepare("INSERT INTO `beitrag` (vor_nachname, titel_text, text_text) VALUES(:by, :on, :text)");
     $stmt->execute([':by' => $vor_nachname, ':on' => $titel_text, ':text' => $text_text]);
@@ -33,40 +28,67 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Blog</title>
 </head>
 <body>
-    <form action="formular.php" method="POST">
-        <h1 class = titel >Blog</h1>
-        <div class =mitte class = titel>
-        <label for="vor_nachname">Name</label>
-            <input type="text" id="vor_nachname" name="vor_nachname">
-            </div>
-            <div class="form-field">
-            <label for="titel_text">Titel</label>
-            <input type="text" id="titel_text" name="titel_text">
-            </div>
-            <div class="form-field">
-            <label for="text_text">Blog</label>
-            <textarea cols="40" rows="4" type="text" id="text_text" name="text_text"></textarea>
-            </div>
-            <button type="submit" name="action" value="1">senden</button>
-        </div> 
-      <div>
-  
-            <?php
-             $sql = "SELECT vor_nachname, time_date, title_text, text_text FROM posts";
-             foreach ($pdo->query($sql) as $row) {
-            echo $row['vor_nachname']."<br />";
-            echo $row['time_date']."<br />";
-            echo $row['title_text']."<br />";
-            echo $row['text_text']."<br />";
-            
+    <div class="grids">
+    <header class="header">
+        <h1 class =mitte >Blog</h1>
+    </header>
+    <aside class="aside">
+        <?php
+            $user = 'blj';
+            $password = '123';
+            $pdo1 = new PDO('mysql:host=10.20.18.111;dbname=ipadressen', $user, $password, [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+        ]); 
+    
+
+            $sql1 = "SELECT vorname, ip FROM ipadressen";
+             foreach ($pdo1->query($sql1) as $row1) {
+            echo $row1['vorname']."<br />";
+            echo $row1['ip']."<br />";      
+              
         }
-    ?>
-
-
-        </div>
+        ?>
+        
+    </aside>
+    <main class="main">
+        <form action="index.php" method="POST">
+            <div class =mitte  >
+                <div class = kasten>
+                <label for="vor_nachname">Name</label>
+                <input type="text" id="vor_nachname" name="vor_nachname">
+                </div>
+                <div class =kasten class="form-field">
+                <label for="titel_text">Titel</label>
+                <input type="text" id="titel_text" name="titel_text">
+                </div>
+                <div class =kasten class="form-field">
+                <label for="text_text">Blog</label>
+                <textarea href="" cols="40" rows="4" type="text" id="text_text" name="text_text"></textarea>
+                </div>
+                <div class =kasten>
+                <button type="submit" name="action" value="1">senden</button><br>
+                </div>
+            </div>
+        <?php
+            $sql = "SELECT vor_nachname, time_date, titel_text, text_text FROM beitrag";
+            $sql = "SELECT * FROM beitrag order by time_date desc";
+            foreach ($pdo->query($sql) as $row) { ?>
+            <div class="ausgabe"> <?php
+                echo $row['vor_nachname']."<br />";
+                echo $row['time_date']."<br />";
+                echo $row['titel_text']."<br />";
+                echo $row['text_text']."<br /> <br />"; ?>
+            </div>
+        <?php          
+            }
+        ?>
+        
+    </main>
+    </div>
 </body>
-</html>                            
+</html>
