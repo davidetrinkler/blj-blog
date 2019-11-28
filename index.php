@@ -1,9 +1,9 @@
  <?php
- /*$user = 'blj';
- $password = '123';
- $pdo = new PDO('mysql:host=10.20.18.113;dbname=blog', $user, $password, [
-     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+/* $user = 'blj';
+$password = '123';
+$pdo = new PDO('mysql:host=10.20.18.113;dbname=blog', $user, $password, [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
  ]);*/
 $user = 'root';
 $password = '';
@@ -53,7 +53,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
             </div>
             <button type="submit" name="action" value="1">senden</button>
         </div> 
-        <div>
+      <div>
   
             <?php
              $sql = "SELECT vor_nachname, time_date, title_text, text_text FROM posts";
