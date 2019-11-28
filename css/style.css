@@ -2,8 +2,8 @@
     font-size: larger;
     background-color: indianred;
     display: grid;
-    grid-template-columns: 520px auto;
-    grid-template-rows: 200px auto; 
+    grid-template-columns: 300px auto;
+    grid-template-rows: 100px auto; 
 }
 
 .header{
@@ -25,4 +25,18 @@
     grid-row-start: 2;
     grid-row-end: 3;
     border: 2px black solid;
+    text-align: center;
+}
+.ausgabe{
+    border: 2px black solid;
+}
+
+.kasten {
+    border-bottom: 4px black solid;
+}
+.name{
+    padding-left: 150px;
+}
+.titel{
+    padding-left: 150px;
 }

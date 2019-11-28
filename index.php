@@ -22,9 +22,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
 
 <!DOCTYPE html>
 <html lang="en">
-<link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
-
 <head>
+<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -32,10 +31,10 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
     <title>Blog</title>
 </head>
 <body>
-    <div class="grids">
-    <header class="header">
-        <h1 class =mitte >Blog</h1>
-    </header>
+<div class="grids">
+<header class="header">
+<h1 class =mitte >Blog</h1>
+</header>
     <aside class="aside">
         <?php
             $user = 'blj';
@@ -44,33 +43,31 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         ]); 
-    
-
             $sql1 = "SELECT vorname, ip FROM ipadressen";
              foreach ($pdo1->query($sql1) as $row1) {
-            echo $row1['vorname']."<br />";
-            echo $row1['ip']."<br />";      
-              
-        }
-        ?>
-        
+                
+                echo " <a href=[vorname]></a>";
+                echo " <a href=[ip]></a>";
+            ?>
+            
+        }       
     </aside>
     <main class="main">
         <form action="index.php" method="POST">
-            <div class =mitte  >
-                <div class = kasten>
+            <div class =kasten  >
+                <div>
                 <label for="vor_nachname">Name</label>
-                <input type="text" id="vor_nachname" name="vor_nachname">
+                <input class=name type="text" id="vor_nachname" name="vor_nachname" required>
                 </div>
-                <div class =kasten class="form-field">
+                <div class="form-field">
                 <label for="titel_text">Titel</label>
-                <input type="text" id="titel_text" name="titel_text">
+                <input classe=titel type="text" id="titel_text" name="titel_text" required>
                 </div>
-                <div class =kasten class="form-field">
+                <div class="form-field">
                 <label for="text_text">Blog</label>
-                <textarea href="" cols="40" rows="4" type="text" id="text_text" name="text_text"></textarea>
+                <textarea href="" cols="40" rows="4" type="text" id="text_text" name="text_text" required></textarea>
                 </div>
-                <div class =kasten>
+                <div>
                 <button type="submit" name="action" value="1">senden</button><br>
                 </div>
             </div>
@@ -87,7 +84,6 @@ $pdo = new PDO('mysql:host=localhost;dbname=blog', $user, $password, [
         <?php          
             }
         ?>
-        
     </main>
     </div>
 </body>
