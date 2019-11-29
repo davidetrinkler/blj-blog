@@ -1,15 +1,16 @@
 .grids{
     font-size: larger;
-    background-color: indianred;
     display: grid;
-    grid-template-columns: 300px auto;
-    grid-template-rows: 100px auto; 
+    grid-template-columns: 15% auto;
+    grid-template-rows: 100px auto 100px; 
+    
 }
 
 .header{
     grid-column-start: 1;
     grid-column-end: 3;
     border: 2px black solid;
+    background-color: coral;
 }
 
 .aside{
@@ -18,6 +19,8 @@
     grid-row-start: 2;
     grid-row-end: 3;
     border: 2px black solid;
+    background-color: coral;
+    padding-left: 4%;
 } 
 .main{
     grid-column-start: 2;
@@ -29,14 +32,33 @@
 }
 .ausgabe{
     border: 2px black solid;
+    background-color: aquamarine;
 }
 
 .kasten {
     border-bottom: 4px black solid;
+    background-color: aquamarine;
 }
 .name{
-    padding-left: 150px;
+    
+    margin-bottom: 1%;
 }
 .titel{
-    padding-left: 150px;
+   
+    margin-bottom: 1%;
+}
+footer{
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    border-bottom: 4px black solid;
+    color: white;
+}
+html{
+    font-family: 'Noto Sans', sans-serif;
+}
+.footer{
+    text-align: center;
 }
